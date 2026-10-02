@@ -271,8 +271,7 @@ a.img-link { display: block; border-bottom: none; }
 .portrait { width: 70%; }
 @media (max-width: 700px) { .portrait { width: 100%; } }
 
-/* section headings on paper pages: same // marker as the hardware spec lists */
-.paper-h2::after, .cite-label::after { content: " //"; }
+/* section headings on paper pages */
 .paper-h2 { margin: 0 0 1.3em; }
 .paper-h2, .cite-label { text-align: left; font-style: italic; }
 .cite, .cite p { text-align: left; }
