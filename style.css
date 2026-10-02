@@ -263,5 +263,6 @@ a.img-link { display: block; border-bottom: none; }
   .pair.bathtub-pair { grid-template-columns: 1fr; }
   .pair.bathtub-pair img { height: auto; }
   /* paper pages: centered text on phones */
-  .paper-abstract, .pal-tldr { text-align: center; }
+  .pal-tldr { text-align: center; }
+  .paper-abstract { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 }
