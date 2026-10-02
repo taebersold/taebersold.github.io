@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Only Project Once, Tim Aebersold</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+.pal-apps { display: flex; gap: 1.5rem; max-width: 960px; margin: 0 auto 2.5rem; }
+.pal-apps figure { flex: 1 1 0; margin: 0; }
+.pal-apps img { width: 100%; display: block; }
+.pal-apps figcaption { margin-top: 0.4rem; }
+.pal-tldr { max-width: none; margin: 0 auto 3rem; line-height: 1.3; }
+@media (max-width: 700px) { .pal-apps { gap: 0.5rem; } .pal-apps figcaption { font-size: 11px; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html">Home</a>
+  <a class="name" href="../index.html">Tim Aebersold</a>
+  <a class="about" href="../about/index.html">About</a>
+</nav>
+
+<main class="paper">
+
+<h1 class="paper-title">Only Project Once: Projection-Adaptive Loss for Exact Constraint Satisfaction</h1>
+<p class="paper-authors"><a href="../about/index.html">Tim Aebersold</a>, <a href="https://ideal.ethz.ch/laboratory/people/soheyl-massoudi.html">Soheyl Massoudi</a>, <a href="https://ideal.ethz.ch/laboratory/people/mark-fuge.html">Mark D. Fuge</a></p>
+<p class="paper-affil">ETH Zurich</p>
+<div class="paper-pill">Preprint</div>
+
+<div class="paper-buttons">
+  <!-- TODO: link -->
+  <span class="btn disabled" title="coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 2.5h8l5 5v14H6z M14 2.5v5h5 M9 13h7 M9 17h7"/></svg>Paper</span>
+  <!-- TODO: link -->
+  <span class="btn disabled" title="coming soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 4.5l12 15 M18 4.5L6 19.5"/></svg>arXiv</span>
+  <!-- TODO: link -->
+  <span class="btn disabled" title="coming soon"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Code</span>
+  <a class="btn" href="#bibtex" onclick="copyBib(this); return false;"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 4C7 4 6.5 5 6.5 7v2.5C6.5 11 5.5 12 4 12c1.5 0 2.5 1 2.5 2.5V17c0 2 .5 3 2.5 3 M15 4c2 0 2.5 1 2.5 3v2.5c0 1.5 1 2.5 2.5 2.5-1.5 0-2.5 1-2.5 2.5V17c0 2-.5 3-2.5 3"/></svg><span class="label">BibTeX</span></a>
+</div>
+
+<div class="pal-apps paper-figure">
+  <figure><img src="../assets/pal/app_uav.png" alt="Blended wing body aircraft with internal structure"><figcaption>Aircraft design</figcaption></figure>
+  <figure><img src="../assets/pal/app_wind.png" alt="City block with buildings over a pedestrian wind speed field"><figcaption>Urban wind comfort</figcaption></figure>
+  <figure><img src="../assets/pal/app_grid.png" alt="One-line diagram of the IEEE 57-bus power grid"><figcaption>Power grid (ACOPF)</figcaption></figure>
+</div>
+
+<p class="pal-tldr">In training, a single detached projection step is enough for exact constraint satisfaction.</p>
+
+<h2 class="paper-h2">Abstract</h2>
+<p class="paper-abstract">Precise constraint satisfaction is a prerequisite to deploying learned models in many areas, motivating methods that repair raw neural predictions with a repair procedure. Current methods unroll multiple repair steps in training and softly penalize constraint violations that remain after the unroll. This is compute- and memory-intensive, lacks robustness when the repair fails to converge, and surrenders most of the constraint satisfaction work to the repair. Our central finding is that, contrary to common practice, a single detached projection step suffices in training. We accomplish this with a Projection-Adaptive Loss (PAL), which uses the constraint residual after this single step to adaptively weigh constraint penalties on the raw prediction. In experiments, PAL is the only method that retains virtually perfect feasibility on extremely nonlinear constraints, and matches or outperforms current methods on synthetic and engineering benchmarks. Because it only requires a single detached projection step, PAL trains 2.5&times; faster than the canonical repair-based method (DC3) on its own ACOPF benchmark. PAL can also be trained when constraints are expensive to evaluate (e.g., via neural surrogates), a setting where current unrolled methods are memory-intractable.</p>
+
+<h2 class="paper-h2">Method</h2>
+<p class="paper-abstract">Current methods unroll many repair steps in training and backpropagate through all of them. Constraint violations that remain after the unroll get a soft penalty with a fixed weight. PAL instead takes one detached repair step and measures the residual it leaves. That residual sets adaptive penalty weights on the raw prediction, so the network learns to land close to the feasible set by itself.</p>
+
+<figure class="paper-figure hero">
+  <a class="img-link" href="../assets/pal/hero.png"><img src="../assets/pal/hero.png" alt="Diagram comparing unrolled repair training with PAL, which uses a single detached projection step to set adaptive penalty weights"></a>
+</figure>
+
+<h2 class="paper-h2">Results</h2>
+<p class="paper-abstract">We test PAL on three engineering case studies. Aircraft design uses a neural geometry model with surrogates for structure and aerodynamics. Urban planning uses a video diffusion model to rate pedestrian wind comfort. On both, the unrolled repair baselines run out of memory even at a batch size of 1 (SnareNet on aircraft design at 8), while PAL trains with batches of 32 and 16. On the ACOPF power grid benchmark with 576 constraints, PAL leads in feasibility and optimality and trains 2.5&times; faster than DC3.</p>
+
+<figure class="paper-figure hero">
+  <a class="img-link" href="../assets/pal/engineering.png"><img src="../assets/pal/engineering.png" alt="Results table for the aircraft, urban wind and power grid case studies, comparing PAL with ALM, DC3, FSNet, SnareNet, ENFORCE and IPOPT"></a>
+  <figcaption>Mean and standard deviation over 10 seeds. Mem is peak GPU memory in GB at batch size 1. Viol is the maximum constraint violation. Bold marks the best value among feasible methods. &dagger;&nbsp;0% feasibility. &sect;&nbsp;Batch size 8. &Dagger;&nbsp;49 GB on 3 seeds, out of memory on 7. &#9651;&nbsp;No convergence. &#9671;&nbsp;Not applicable.</figcaption>
+</figure>
+
+<p class="paper-abstract">We also sweep the curvature &kappa; of the constraints on a synthetic problem. PAL matches the full unroll methods on optimality and keeps the highest feasibility up to &kappa; = 10<sup>6</sup>. This works because its adaptive weight raises the constraint pressure whenever the single repair step leaves large residuals.</p>
+
+<figure class="paper-figure hero">
+  <a class="img-link" href="../assets/pal/curvature.png"><img src="../assets/pal/curvature.png" alt="Feasibility, objective and constraint gradient share over constraint curvature for PAL and baselines"></a>
+  <figcaption>Feasibility, objective and share of training pressure from the constraint loss over curvature &kappa;. PAL keeps high feasibility at high curvature despite a single repair step.</figcaption>
+</figure>
+
+<section class="cite" id="bibtex">
+  <p class="cite-label">Cite</p>
+  <div>
+    <p>Aebersold, T., Massoudi, S., and Fuge, M. D. (2026). Only Project Once: Projection-Adaptive Loss for Exact Constraint Satisfaction. <i>arXiv:<span class="todo">XXXX.XXXXX</span></i>.</p>
+    <div class="cite-bib" id="bib"><span class="e"><!-- TODO: replace with the arXiv id once the preprint is posted -->@article{aebersold2026onlyprojectonce,</span><span class="f">title = {Only Project Once: Projection-Adaptive Loss for Exact Constraint Satisfaction},</span><span class="f">author = {Aebersold, Tim and Massoudi, Soheyl and Fuge, Mark D.},</span><span class="f">journal = {arXiv preprint arXiv:<span class="todo">XXXX.XXXXX</span>},</span><span class="f">year = {2026}</span><span class="e">}</span></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <span>2026</span>
+  <span>Zurich, Switzerland</span>
+</footer>
+
+<script>
+function copyBib(btn) {
+  var lines = [].map.call(document.querySelectorAll('#bib span'), function (e) {
+    return (e.className === 'f' ? '  ' : '') + e.textContent;
+  });
+  navigator.clipboard.writeText(lines.join('\n'));
+  var label = btn.querySelector('.label');
+  label.textContent = 'Copied';
+  setTimeout(function () { label.textContent = 'BibTeX'; }, 1500);
+}
+</script>
+</body>
+</html>

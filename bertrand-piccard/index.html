@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bertrand Piccard, Tim Aebersold</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+/* Pairs: row height follows the wide image, the narrow one is cropped to match (as on Cargo). */
+.pair.matched { grid-template-columns: var(--cols); }
+.pair.matched img.lead { height: auto; }
+.pair.matched img.fill { height: 0; min-height: 100%; }
+@media (max-width: 700px) {
+  .pair.matched { grid-template-columns: 1fr; }
+  .pair.matched img.fill { height: auto; min-height: 0; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html">Home</a>
+  <a class="name" href="../index.html">Tim Aebersold</a>
+  <a class="about" href="../about/index.html">About</a>
+</nav>
+
+<header class="head">
+  <div>
+    <h1 class="title">Bertrand Piccard</h1>
+    <p class="subtitle">Vacuum Transport Prototype, 2022/23</p>
+  </div>
+  <ul class="specs">
+    <li>245 kg</li>
+    <li>LxW 2490x1000</li>
+    <li>Max. Thrust 2.8 kN</li>
+    <li>LiPo Battery 800V</li>
+    <li>Carbon Fibre Monocoque Chassis</li>
+    <li>DS-LSRM Propulsion</li>
+    <li>HEMS/EMS Levitation Systems</li>
+    <li>5 Awards</li>
+  </ul>
+</header>
+
+<img class="full" src="../assets/bertrand-piccard/crowd-track.jpg" alt="Bertrand Piccard on the test track in front of a crowd">
+
+<section class="text">
+  <p>In 2022/23, I had the privilege of leading a team of 11 mechanical and electrical engineers during the development and testing of <a href="https://swissloop.ch/prototypes/bertrand-piccard/">Swissloop’s</a> newest prototype.</p>
+  <p>In July 2023, Bertrand Piccard was awarded Best Overall System, Best Thermal Management, Best Propulsion, Best Electrical Systems, and Best Sense and Controls at the <a href="https://ee.ethz.ch/news-and-events/d-itet-news-channel/2023/08/european-hyperloop-week-2023.html">European Hyperloop Week</a> in Edinburgh, United Kingdom.</p>
+</section>
+
+<div class="pair matched" style="--cols: 1.87fr 1fr">
+  <img src="../assets/bertrand-piccard/nose.jpg" alt="Nose of Bertrand Piccard with the crowd behind" class="lead">
+  <img src="../assets/bertrand-piccard/track-rear.jpg" alt="Open pod seen from behind on the long track" class="fill">
+</div>
+
+<section class="text">
+  <p>Named after famed swiss explorer and pioneer Bertrand Piccard, the prototype was designed and manufactured over a period of 9 months to compete at the <a href="https://www.hyperloopweek.com/">European Hyperloop Week</a>. The goal: demonstrate key technologies needed to make high-speed vacuum rail transport a reality. It features a powerful contactless linear motor (Double-Sided Linear Switched Reluctance Motor: DS-LSRM) with unparalleled potential for high efficiency and low cost of infrastructure.</p>
+  <p>Thanks to its levitation system, Bertrand Piccard moves without touching any rails. By eliminating friction and vibrations, this allows for higher speeds to be achieved. Fully self-developed power electronics (800V / 250A) based around SiC MOSFETs and controls using FPGAs allow for customized current control in the motor and levitation systems. The on-board systems are supplied by LiPo batteries with incredible power density (26 kW/kg).</p>
+</section>
+
+<div class="pair matched" style="--cols: 3.09fr 1fr">
+  <img src="../assets/bertrand-piccard/run-banner.jpg" alt="Bertrand Piccard passing at speed" class="lead">
+  <img src="../assets/bertrand-piccard/nose-head-on.jpg" alt="Nose of Bertrand Piccard head-on on the track" class="fill">
+</div>
+
+<section class="text">
+  <p>Bertrand Piccard features over 400 sensors used for monitoring and controls. Uniquely, a phase change cooling system (<a href="../vcm/index.html"><i>VCM v1</i></a>) allows for thermal management in vacuum environments. The vehicle is stopped with a pneumatic braking system. Housing all components is an aerodynamically optimized monocoque chassis, made with a carbon fibre / aramide core sandwich construction.</p>
+</section>
+
+<footer class="footer">
+  <span>2026</span>
+  <span>Zurich, Switzerland</span>
+</footer>
+
+</body>
+</html>

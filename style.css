@@ -1,0 +1,267 @@
+/* t-aeb.ch: one stylesheet for every page. */
+
+:root {
+  color-scheme: light only;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font: var(--sans);
+  --text: #000;
+  --muted: #777;
+  --bg: #fff;
+  --gutter: 3.5vw;
+  --size: clamp(18px, 2.15vw, 34px);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 var(--gutter);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--size);
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
+img, video { display: block; max-width: 100%; height: auto; }
+
+/* Header: Home / name / About */
+.nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  padding: 2.2rem 0 3rem;
+}
+.nav a { border-bottom: none; }
+.nav .name { text-align: center; }
+.nav .about { text-align: right; }
+
+/* Footer: year / place */
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 6rem 0 2rem;
+}
+
+/* Homepage grid: two columns of tiles, title on hover */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.tile { position: relative; display: block; border-bottom: none; }
+.tile img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.tile img.contain { object-fit: contain; }
+.tile .label {
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+  padding: 0.3rem 0.8rem;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.tile:hover .label { opacity: 1; }
+
+/* Project header: title + italic subtitle left, spec list right */
+.head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.head .title { margin: 0 0 2rem; font-weight: normal; font-size: inherit; }
+.head .subtitle { font-style: italic; margin: 0; }
+.head .specs { list-style: none; margin: 0; padding: 0; }
+.head .specs li::after { content: " //"; }
+.head .links { list-style: none; margin: 0; padding: 0; }
+.head .links li { margin-bottom: 1.2rem; }
+
+/* Body text and figures */
+.text { margin: 3rem 0; }
+.text p { margin: 0 0 1.3em; }
+.full { margin: 3rem 0; width: 100%; }
+.pair {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+.pair.even { grid-template-columns: 1fr 1fr; }
+.pair img { width: 100%; height: 100%; object-fit: cover; }
+.caption { color: var(--muted); font-size: 0.6em; margin-top: 0.5rem; }
+.credit { color: var(--muted); font-size: 0.55em; margin-top: 3rem; }
+pre.bibtex {
+  font-size: 0.5em;
+  white-space: pre-wrap;
+  font-family: ui-monospace, Menlo, monospace;
+  border-top: 1px solid var(--text);
+  padding-top: 1rem;
+}
+.todo { color: #c00; }
+
+@media (max-width: 700px) {
+  :root { --gutter: 16px; --size: 18px; }
+  .grid, .head, .pair, .pair.even, .footer { grid-template-columns: 1fr; }
+  .nav { padding: 1.2rem 0 2rem; }
+}
+
+/* added by hardware pages */
+.full.narrow { width: 60%; margin-left: auto; margin-right: auto; }
+@media (max-width: 700px) { .full.narrow { width: 100%; } }
+
+/* paper pages */
+.paper { max-width: 960px; margin: 0 auto; text-align: center; }
+.paper-title { font-family: var(--font); font-weight: normal; font-size: 1em; line-height: 1.2; margin: 1rem 0 1.6rem; }
+.paper-authors { font-size: 1em; margin: 0 0 0.3em; }
+.paper-affil { font-size: 1em; margin: 0 0 1.4rem; }
+.paper-pill {
+  display: inline-block;
+  font-size: 1em;
+  border: 1px solid var(--text);
+  border-radius: 999px;
+  padding: 0.25em 0.9em;
+  margin-bottom: 1.4rem;
+}
+.paper-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 3rem; }
+.paper-buttons .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: var(--font);
+  font-size: 1em;
+  line-height: 1;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 999px;
+  padding: 0.7em 1.15em;
+}
+.paper-buttons .btn:hover { background: #333; }
+.paper-buttons .btn.disabled, .paper-buttons .btn.disabled:hover { background: #999; cursor: default; }
+.paper-buttons .btn svg { width: 1.05em; height: 1.05em; fill: currentColor; flex: none; }
+.paper-figure { margin: 0 auto 3rem; }
+.paper-figure img { width: 100%; margin: 0 auto; }
+.paper-figure.hero { max-width: 900px; }
+.paper-figure.medium { max-width: 800px; }
+.paper-figure figcaption {
+  color: var(--muted);
+  font-size: 1em;
+  line-height: 1.45;
+  max-width: 720px;
+  margin: 0.8rem auto 0;
+}
+.paper-h2 { font-family: var(--font); font-weight: normal; font-size: 1em; margin: 0 0 1rem; }
+.paper-abstract {
+  max-width: 800px;
+  margin: 0 auto 3.5rem;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: justify;
+  hyphens: auto;
+}
+.paper-bib {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #f4f4f4;
+  padding: 1rem 1.2rem;
+  font-family: var(--font);
+  font-size: 1em;
+  line-height: 1.5;
+  white-space: pre;
+  overflow-x: auto;
+}
+@media (max-width: 700px) {
+  .paper-title { font-size: 1em; }
+  .paper-abstract { text-align: left; }
+  .paper-figure.hero, .paper-figure.medium { max-width: 100%; }
+}
+
+/* paper pages: match hardware-page type */
+.paper-figure figcaption, .paper-bib { font-size: 0.6em; }
+.paper-abstract { text-align: left; }
+.paper-title { margin: 0 0 1.3em; }
+.paper-buttons .btn { padding: 0.25em 0.8em; }
+@media (max-width: 700px) { .paper-title { font-size: 1em; } }
+.paper { max-width: none; }
+.paper-abstract, .paper-bib { max-width: none; line-height: 1.3; hyphens: manual; }
+.paper-abstract { margin-bottom: 3rem; }
+
+/* citation block, Cargo-style two columns */
+.cite {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  text-align: left;
+  margin: 6rem 0 0;
+}
+.cite p { margin: 0 0 1.3em; }
+.cite-label { margin: 0; }
+.cite-bib {
+  font-family: var(--font);
+  font-size: 1em;
+  line-height: 1.3;
+  color: var(--muted);
+  white-space: pre-wrap;
+  margin: 0;
+}
+@media (max-width: 700px) { .cite { grid-template-columns: 1fr; } }
+.cite-bib span { display: block; }
+.cite-bib span.f { padding-left: 2em; text-indent: -1em; }
+
+/* cite block: single column, centered */
+.cite { display: block; text-align: center; }
+.cite-label { margin: 0 0 1.3em; }
+.cite-bib .todo { white-space: nowrap; }
+.cite-bib { display: none; }
+
+/* image links: tap to open the full-size figure, no link styling */
+a.img-link { display: block; border-bottom: none; }
+
+/* touch devices: tile titles as a plain line below the image */
+@media (hover: none), (max-width: 700px) {
+  .tile .label {
+    position: static;
+    display: block;
+    padding: 0;
+    margin-top: 0.4rem;
+    background: none;
+    color: var(--text);
+    opacity: 1;
+  }
+}
+
+/* phone: tighter vertical rhythm and compact paper buttons */
+@media (max-width: 700px) {
+  .nav { padding: 1rem 0 1.5rem; gap: 0.5rem; }
+  .nav a { white-space: nowrap; }
+  .footer { padding: 3rem 0 1.5rem; }
+  .grid { gap: 1.5rem; }
+  .head { gap: 1rem; margin-bottom: 1.5rem; }
+  .head .title { margin-bottom: 1rem; }
+  .head > div > p:first-child { margin-top: 0; }
+  .head p[style*="3rem"], .head ul[style*="3rem"] { margin-top: 1.5rem !important; }
+  .text, .full, .pair { margin: 1.5rem 0; }
+  .pair, .pair.even { gap: 1rem; }
+  .credit { margin-top: 1.5rem; }
+  .paper-title { margin-bottom: 1rem; }
+  .paper-affil { margin-bottom: 1rem; }
+  .paper-pill { font-size: 15px; margin-bottom: 1rem; }
+  .paper-buttons { gap: 0.4rem; margin-bottom: 2rem; }
+  .paper-buttons .btn { font-size: 15px; padding: 0.4em 0.75em; gap: 0.35em; }
+  .paper-figure { margin-bottom: 2rem; }
+  .paper-abstract { margin-bottom: 2rem; }
+  .cite { margin-top: 3rem; }
+}
+
+/* bathtub photo pair: Cargo proportions on desktop, stacked full width on phones */
+.pair.bathtub-pair { grid-template-columns: 0.8fr 1fr; }
+@media (max-width: 700px) {
+  .pair.bathtub-pair { grid-template-columns: 1fr; }
+  .pair.bathtub-pair img { height: auto; }
+  /* paper pages: centered text on phones */
+  .paper-abstract, .pal-tldr { text-align: center; }
+}
