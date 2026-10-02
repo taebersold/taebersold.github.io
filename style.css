@@ -270,3 +270,7 @@ a.img-link { display: block; border-bottom: none; }
 /* about page portrait */
 .portrait { width: 70%; }
 @media (max-width: 700px) { .portrait { width: 100%; } }
+
+/* section headings on paper pages: same // marker as the hardware spec lists */
+.paper-h2::after, .cite-label::after { content: " //"; }
+.paper-h2 { margin: 0 0 1.3em; }
