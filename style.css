@@ -274,3 +274,4 @@ a.img-link { display: block; border-bottom: none; }
 /* section headings on paper pages: same // marker as the hardware spec lists */
 .paper-h2::after, .cite-label::after { content: " //"; }
 .paper-h2 { margin: 0 0 1.3em; }
+.paper-h2, .cite-label { text-align: left; font-style: italic; }
