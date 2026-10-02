@@ -276,3 +276,10 @@ a.img-link { display: block; border-bottom: none; }
 .paper-h2 { margin: 0 0 1.3em; }
 .paper-h2, .cite-label { text-align: left; font-style: italic; }
 .cite, .cite p { text-align: left; }
+
+/* running text: justified with hyphenation, on every page and screen size */
+.text p, .paper-abstract {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
