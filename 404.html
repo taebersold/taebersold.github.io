@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found, Tim Aebersold</title>
+<link rel="stylesheet" href="/style.css">
+<script>
+// Old Cargo links (e.g. /GLUE, /VCM-v1) were case-insensitive. Send them to the new page.
+var pages = ["pal", "glue", "bertrand-piccard", "vcm", "waterblock", "bathtub", "cargoshell", "about"];
+var aliases = {"vcm-v1": "vcm", "waterblock-v1": "waterblock", "the-bathtub": "bathtub"};
+var slug = location.pathname.replace(/^\/+|\/+$/g, "").replace(/\/index\.html$/i, "").toLowerCase();
+slug = aliases[slug] || slug;
+if (pages.indexOf(slug) >= 0) location.replace("/" + slug + "/");
+</script>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/">Home</a>
+  <a class="name" href="/">Tim Aebersold</a>
+  <a class="about" href="/about/">About</a>
+</nav>
+
+<p style="margin-top:3rem">Page not found. <a href="/">Back to Home</a></p>
+
+</body>
+</html>
