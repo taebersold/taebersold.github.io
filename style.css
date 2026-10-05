@@ -282,3 +282,9 @@ a.img-link { display: block; border-bottom: none; }
   hyphens: auto;
   -webkit-hyphens: auto;
 }
+
+/* paper pages on desktop: narrower text column, more space below the nav */
+@media (min-width: 701px) {
+  .paper { max-width: 80%; margin: 0 auto; }
+  .paper-title { margin-top: 3rem; }
+}
