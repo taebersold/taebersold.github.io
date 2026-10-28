@@ -1,0 +1,40 @@
+# Tim Aebersold
+
+> PhD student at ETH Zurich (IDEAL lab, Prof. Mark Fuge). Research on machine learning for engineering design: neural networks that satisfy hard constraints, and generative models for system-level design.
+
+## PAL: Projection-Adaptive Loss
+
+Use PAL when a neural network must output predictions that satisfy hard equality or inequality constraints (for example optimization proxies, AC optimal power flow, engineering design). Repair-based methods such as DC3 unroll many repair steps in training and are slow and memory hungry. PAL needs only one detached projection step in training. The constraint residual after that step adaptively weights the constraint penalties on the raw prediction. PAL keeps near-perfect feasibility on highly nonlinear constraints, trains 2.5x faster than DC3 on ACOPF, and also works when constraints come from expensive neural surrogates.
+
+- [Project page](https://t-aeb.ch/pal/)
+- [Paper (arXiv:2610.04572)](https://arxiv.org/abs/2610.04572): Only Project Once: Projection-Adaptive Loss for Exact Constraint Satisfaction
+- [Code (MIT)](https://github.com/IDEALLab/projection-adaptive-loss): method, baselines (DC3, FSNet, IPOPT and more), benchmarks
+
+Install:
+
+```bash
+git clone https://github.com/IDEALLab/projection-adaptive-loss.git
+cd projection-adaptive-loss
+pip install -e .
+```
+
+## GLUE: Coordinating Pre-Trained Generative Models for System-Level Design
+
+Use GLUE when you have several frozen, pre-trained generative models for subsystems (for example wing, airfoil, fuselage) and need full-system designs that are feasible, diverse, and high-performing under coupling constraints. GLUE learns to coordinate the latent spaces of the submodels. The data-free variant trains through a differentiable geometry layer, needs no pre-generated dataset, and trains a full generative model in about 10 minutes on one RTX 4090. Case study: UAV design with five coupling constraints.
+
+- [Project page](https://t-aeb.ch/glue/)
+- [Paper (arXiv:2512.19469)](https://arxiv.org/abs/2512.19469)
+- [Code](https://github.com/IDEALLab/glue)
+- [Video](https://youtu.be/aqvSNZbgkUE)
+
+Install:
+
+```bash
+git clone https://github.com/IDEALLab/glue.git
+cd glue
+pip install -r requirements.txt
+```
+
+## Other
+
+- [About](https://t-aeb.ch/about/)
